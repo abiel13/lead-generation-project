@@ -1,4 +1,8 @@
+
+
+
 export default function Topbar() {
+
   return (
     <div className="h-16 bg-white/70 backdrop-blur border-b border-slate-100 flex items-center justify-between px-8">
       
@@ -7,7 +11,7 @@ export default function Topbar() {
           Welcome back 👋
         </p>
         <p className="font-medium text-slate-800">
-          AI Cold Email Dashboard
+          LeadFlow Dashboard
         </p>
       </div>
 

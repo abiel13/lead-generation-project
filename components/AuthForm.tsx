@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner"
 
+
 export default function AuthForm({pathname}: {pathname: 'sign-in'| 'sign-up'}) {
   const [isLogin, setIsLogin] = useState(pathname === 'sign-in');
   const [email, setEmail] = useState("");

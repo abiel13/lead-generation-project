@@ -1,6 +1,7 @@
 import Sidebar from "@/components/Sidebar";
 import Topbar from "@/components/Topbar";
 import  "../globals.css"
+import { createClient } from "@/utils/supabase/server";
 
 
 export const metadata  ={
@@ -9,11 +10,13 @@ export const metadata  ={
 
 }
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+
   return (
     <html>
     <body>

@@ -1,7 +1,15 @@
+import { createClient } from '@/utils/supabase/server';
+import { cookies } from 'next/headers';
 import {NextResponse, NextRequest} from 'next/server';
 
 
 export async function GET(request:NextRequest) {
+    const cookieStore = await cookies();
+
+    const supabaseClient = await createClient(cookieStore);
+    const userEmail = supabaseClient.auth.getUser().then(({data}) => data.user?.email);
+
+    console.log("User email from supabase auth:", userEmail);
    
     const data =
 [
@@ -98,5 +106,5 @@ export async function GET(request:NextRequest) {
 {"id":79,"name":"Jace Coleman","email":"jace.coleman79@mail.com","company":"DataNest","role":"Software Engineer","posted":"2026-05-03","ai_insight":"Software engineer working on data systems."},
 {"id":80,"name":"Everett Jenkins","email":"everett.jenkins80@mail.com","company":"HealthBridge","role":"Frontend Engineer","posted":"2026-04-29","ai_insight":"Frontend engineer in healthcare UI."}
 ]
-    return NextResponse.json({leads: data});
+    return NextResponse.json({leads: data, userEmail});
 }
