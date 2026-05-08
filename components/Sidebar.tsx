@@ -7,7 +7,7 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="mb-10">
         <div className="text-xl font-bold text-blue-600">
-          ColdAI
+          LeadFlow
         </div>
         <p className="text-xs text-slate-400">
           AI Outreach Platform
@@ -16,10 +16,9 @@ export default function Sidebar() {
 
       {/* Nav */}
       <nav className="space-y-2 text-sm">
-        <NavItem href="/" label="Overview" />
-        <NavItem href="/leads" label="Leads" />
-        <NavItem href="/campaigns" label="Campaigns" />
-        <NavItem href="/settings" label="Settings" />
+        <NavItem href="/dashboard" label="Overview" />
+        <NavItem href="/dashboard/leads" label="Leads" />
+        <NavItem href="/dashboard/campaigns" label="Campaigns" />
       </nav>
 
       {/* bottom card */}

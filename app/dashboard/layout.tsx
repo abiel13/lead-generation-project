@@ -18,8 +18,6 @@ export default async function DashboardLayout({
 
 
   return (
-    <html>
-    <body>
     <div className="h-screen flex bg-slate-50">
       <Sidebar />
 
@@ -28,7 +26,5 @@ export default async function DashboardLayout({
         <main className="p-8 overflow-y-auto">{children}</main>
       </div>
     </div>
-    </body>
-    </html>
   );
 }

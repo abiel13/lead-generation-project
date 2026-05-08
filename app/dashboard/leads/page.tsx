@@ -3,11 +3,13 @@
 import { useEffect, useState } from "react";
 import LeadCard from "@/components/LeadCard";
 import axios from "axios";
+import { toast } from "sonner";
 
 export default function LeadsPage() {
   const [query, setQuery] = useState("");
   const [leads, setLeads] = useState<any[]>([]);
   const [selected, setSelected] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false)
 
   const search = async () => {
     const res = await fetch(`/api/leads`);
@@ -26,10 +28,19 @@ export default function LeadsPage() {
 
  async function launchCampaign() {
    try {
+    setLoading(true);
      const res = await axios.post('/api/campaigns', { leads: selected });
      console.log("Campaign launched successfully:", res.data);
+
+     if (res.data.success) {
+      setSelected([]);
+      toast.success("Campaign launched successfully!"); 
+     }
    } catch (error:any) {
      console.error("Error launching campaign:", error.message);
+   }
+   finally{
+    setLoading(false);
    }
  }
 
@@ -73,8 +84,8 @@ export default function LeadsPage() {
             {selected.length} leads selected
           </p>
 
-          <button onClick={launchCampaign} className="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm">
-            Launch Campaign
+          <button disabled={loading} onClick={launchCampaign} className="px-4 py-2 cursor-pointer bg-blue-600 text-white rounded-lg text-sm">
+            {loading ? "Launching..." : "Launch Campaign"}
           </button>
         </div>
       )}
