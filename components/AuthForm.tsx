@@ -11,6 +11,7 @@ export default function AuthForm({pathname}: {pathname: 'sign-in'| 'sign-up'}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
+  const [loading, setLoading] = useState(false)
 
 
   const handleSubmit = async  (e: React.FormEvent) => {
@@ -18,22 +19,32 @@ export default function AuthForm({pathname}: {pathname: 'sign-in'| 'sign-up'}) {
 
     if(isLogin) {
       try {
+        setLoading(true);
        const response = await axios.post("/api/auth/sign-in", { email, password });
        toast(response.data.message);
         router.push("/dashboard");
       }
       catch (error) {
+        toast.error("Login failed: " + (error as Error).message);
         console.error("Login failed:", error);
+      }
+      finally {
+        setLoading(false);
       }
     } else {
       // Handle signup logic here
       try {
+        setLoading(true);
         const response = await axios.post("/api/auth/sign-up", { email, password });
         toast(response.data.message);
           router.push("/verify-email/" + encodeURIComponent(email));
       }
       catch (error) {
+        toast.error("Signup failed: " + (error as Error).message);
         console.error("Signup failed:", error);
+      }
+      finally {
+        setLoading(false);
       }
     }
 
@@ -109,6 +120,7 @@ export default function AuthForm({pathname}: {pathname: 'sign-in'| 'sign-up'}) {
             className="ml-2 text-purple-400 hover:underline"
           >
             {isLogin ? "Sign Up" : "Sign In"}
+            {loading && " ..."}
           </button>
         </p>
       </div>
