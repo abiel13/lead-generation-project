@@ -101,6 +101,7 @@ export default function AuthForm({pathname}: {pathname: 'sign-in'| 'sign-up'}) {
 
           <button className="w-full py-3 rounded-xl bg-gradient-to-r from-purple-500 to-pink-500 hover:opacity-90 transition font-medium">
             {isLogin ? "Sign In" : "Sign Up"}
+            {loading && <span className="ml-2">...</span>}
           </button>
         </form>
 
@@ -120,7 +121,7 @@ export default function AuthForm({pathname}: {pathname: 'sign-in'| 'sign-up'}) {
             className="ml-2 text-purple-400 hover:underline"
           >
             {isLogin ? "Sign Up" : "Sign In"}
-            {loading && " ..."}
+          
           </button>
         </p>
       </div>
