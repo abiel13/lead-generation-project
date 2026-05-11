@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀  LeadFlow (Automated Lead Generation System n8n + Supabase)
 
-## Getting Started
+An end-to-end automated lead generation and outreach system built with **n8n** and **Supabase**. This project demonstrates how leads can be collected, processed, enriched with AI, and managed through a full campaign pipeline with minimal manual effort.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📌 Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This system automates the full lifecycle of lead handling:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+* Lead capture from a website via webhook
+* Data parsing and transformation using n8n code nodes
+* AI-generated personalized outreach emails
+* Campaign tracking and storage in Supabase
+* Authentication system for secure access
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The goal is to simulate a real-world outbound sales automation system (MVP/POC) that can scale into a production SaaS product.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **n8n** – Workflow automation engine
+* **Supabase** – Authentication + database storage
+* **Webhooks** – Lead ingestion from frontend
+* **JavaScript (Code Nodes)** – Data parsing and transformation
+* **AI Agent (LLM)** – Email generation and personalization
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🔄 System Architecture / Workflow
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 1. Authentication (Supabase)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Users authenticate via Supabase Auth
+* Ensures only authorized users can access campaign features
+
+---
+
+### 2. Lead Capture (Webhook)
+
+* Website sends lead data through a webhook
+* Leads are mock-generated for MVP/POC testing purposes
+
+---
+
+### 3. Data Processing (n8n Code Node)
+
+* Incoming webhook data is parsed and cleaned
+* Data is normalized into a structured format
+* Prepares payload for AI processing
+
+---
+
+### 4. AI Email Generation
+
+* Structured lead data is sent to an AI agent
+* AI generates personalized outreach emails per lead
+* Emails are returned in a structured format for processing
+
+---
+
+### 5. Email Parsing & Final Formatting
+
+* AI response is parsed again in n8n
+* Ensures clean, structured email content
+* Prepares data for storage and campaign execution
+
+---
+
+### 6. Supabase Storage
+
+* Final campaigns and generated emails are stored in Supabase
+* Enables tracking, retrieval, and historical analysis
+
+---
+
+### 7. Campaign Dashboard
+
+* Displays all sent campaigns
+* Shows lead details and generated email content
+* Acts as a lightweight CRM-like interface
+
+---
+
+## 🎯 Features
+
+* Fully automated lead-to-email pipeline
+* AI-powered personalized outreach
+* Secure authentication via Supabase
+* Centralized campaign tracking system
+* Modular n8n workflow design
+* MVP-ready SaaS architecture pattern
+
+---
+
+## 🎥 Demo Video
+
+👉 **Loom Walkthrough:**
+https://www.loom.com/share/0e4118504d7e42d6ae5b1ea7044ff982
+
+---
+
+## 🧠 Key Learnings
+
+* Building full automation pipelines with n8n
+* Structuring webhook-based systems
+* Working with Supabase for auth + database
+* Integrating AI agents into real workflows
+* Designing scalable MVP SaaS architectures
+
+
+---
+
+## 📌 Notes
+This project was built as an MVP proof-of-concept to demonstrate automated outbound lead generation and AI-driven email personalization using modern no-code/low-code tooling combined with backend logic.
+
+This project was built as an MVP proof-of-concept to demonstrate automated outbound lead generation and AI-driven email personalization using modern no-code/low-code tooling combined with backend logic.
